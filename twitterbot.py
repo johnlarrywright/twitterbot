@@ -1,35 +1,30 @@
+#!/usr/bin/python3
 import requests
 from bs4 import BeautifulSoup
 
-url = 'https://twitter.com/search?q=valentino+rossi'
-#url = 'https://pbs.twimg.com/media/EBNHglOXoAEX_cK.jpg:large'
-results = requests.get(url)
-#print(url)
+def twitterProfile(url):
+        #url = 'https://twitter.com/search?q=valentino+rossi'
+        results = requests.get(url)
 
-#print(results.status_code)
-
-#print(results.content)
-#print(results.content)
-#soup = BeautifulSoup(results.content, 'html.parser')
-soup = BeautifulSoup(results.text, 'html.parser')
-#print(soup.div.prettify())
-#print(soup.div.prettify())
-#print(soup)
-
-for link in soup.find_all(''):
-    print(link.get('href'))
-
-profile_image = []    
-for link in soup.find_all('img'):
-    source = link.get('src')
-    #filter out none type and pulling out http for action
-    if source and source[:4]=='http':
-        profile_image.append(source)
+     
+        soup = BeautifulSoup(results.text, 'html.parser')
         
-print(profile_image)
-
-
-
+        profile_image = []    
         
-    # print(link.get('src'))
- 
+        for link in soup.find_all('img'):
+                source = link.get('src')
+                #filter out none type and pulling out http for action
+                if source and source[:4]=='http':
+                        # print('line 28')
+                        profile_image.append(source)
+
+        print_results(profile_image)
+        
+
+def print_results(list_of_urls):
+        for url in list_of_urls:
+                print(url)
+        
+if __name__ == "__main__":
+        url = 'https://twitter.com/search?q=valentino+rossi'
+        twitterProfile(url)

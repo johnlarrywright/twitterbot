@@ -1,4 +1,4 @@
-Twitterbot
+# Twitterbot
 
 USAGE: Twitterbot.py
 Search for profile images on twitter
