@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+import argparse
 import requests
 from bs4 import BeautifulSoup
 
@@ -22,9 +23,20 @@ def twitterProfile(url):
         
 
 def print_results(list_of_urls):
-        for url in list_of_urls:
+               for url in list_of_urls:
                 print(url)
+
+                
+                
+
+                
         
+
 if __name__ == "__main__":
-        url = 'https://twitter.com/search?q=valentino+rossi'
-        twitterProfile(url)
+        parser = argparse.ArgumentParser(description= 'Gets Profile image urls from twitter')
+        parser.add_argument('url', help='Type in twitter url')
+        args = parser.parse_args()
+        print(args.url)
+        # url = 'https://twitter.com/search?q=valentino+rossi'
+        twitterProfile(args.url)
+       
