@@ -23,10 +23,12 @@ def twitterProfile(url):
         
 
 def print_results(list_of_urls):
-               for url in list_of_urls:
-                print(url)
-
-                
+        with open('twitter_results_url.txt', 'a') as f:
+                for url in list_of_urls:
+                        print(url)
+                        
+                f.write('The list of profile you search\n\n' + str(list_of_urlsR))
+                        
                 
 
                 
@@ -36,7 +38,7 @@ if __name__ == "__main__":
         parser = argparse.ArgumentParser(description= 'Gets Profile image urls from twitter')
         parser.add_argument('url', help='Type in twitter url')
         args = parser.parse_args()
-        print(args.url)
+        #print(args.url)
         # url = 'https://twitter.com/search?q=valentino+rossi'
         twitterProfile(args.url)
        
